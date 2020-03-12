@@ -1,0 +1,21 @@
+from ROOT import *
+QCDTF_Ele_2jet0b=1.371
+QCDTF_err_Ele_2jet0b=0.003
+WJetsSF_Ele_2jet0b=1.171
+WJetsSF_err_Ele_2jet0b=0.002
+##################################
+QCDTF_Ele_2jet1b=0.120
+QCDTF_err_Ele_2jet1b=0.001
+WJetsSF_Ele_2jet1b=1.221
+WJetsSF_err_Ele_2jet1b=0.008
+##################################
+QCDTF_Mu_2jet0b=0.752
+QCDTF_err_Mu_2jet0b=0.002
+WJetsSF_Mu_2jet0b=1.246
+WJetsSF_err_Mu_2jet0b=0.001
+##################################
+QCDTF_Mu_2jet1b=0.171
+QCDTF_err_Mu_2jet1b=0.001
+WJetsSF_Mu_2jet1b=1.247
+WJetsSF_err_Mu_2jet1b=0.004
+##################################

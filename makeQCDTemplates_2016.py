@@ -445,7 +445,8 @@ print keylist
 _file_data=TFile("%s%s/Data%s.root"%(dir,inputdir,finalState),"read")
 
 
-phocatlist=["MisIDEle","GenuinePhoton","HadronicPhoton","HadronicFake"]
+#phocatlist=["MisIDEle","GenuinePhoton","HadronicPhoton","HadronicFake"]
+phocatlist=["GenuinePhoton","HadronicPhoton","HadronicFake"]
 
 print "data file"
 print _file_data
@@ -464,22 +465,18 @@ for key in keylist:
     for sample in stackList:
         _file=TFile("%s%s/%s.root"%(dir,inputdir,sample),"read")
         print _file
-	if "presel" in key:
-       	       tempHist = _file.Get("%s_%s"%(key,sample))
-	       if sample =="WJets":
-			print "WJetsSF = ", WJetsSF
-			tempHist.Scale(WJetsSF)
 	if ("phosel" in key) :
-       	       tempHist = _file.Get("%s_%s"%(key,sample))
-               if "QCD_DD" not in hName :
-			tempHist=_file.Get("%s_GenuinePhoton_%s"%(key,sample))
+			tempHist=_file.Get("%s_MisIDEle_%s"%(key,sample))
+			temphist.Scale(misIdEleSF)
 			for pho in phocatlist:
 		   		photemphist=_file.Get("%s_%s_%s"%(key,pho,sample))	
-				if pho=="MisIDEle":
-					photemphist.Scale(misIdEleSF)
-				if pho!="GenuinePhoton":
-					print "adding pho histogram %s"%(pho)
-					tempHist.Add(photemphist)
+				print "adding pho histogram %s"%(pho)
+				tempHist.Add(photemphist)
+	else :
+       	      tempHist = _file.Get("%s_%s"%(key,sample))
+	if sample =="WJets":
+		print "WJetsSF = ", WJetsSF
+		tempHist.Scale(WJetsSF)
 	if sample =="ZJets":
 		 tempHist.Scale(ZJetsSF)
 	if sample =="WGamma":
